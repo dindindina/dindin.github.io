@@ -1,0 +1,164 @@
+---
+title: "Analisis Pengaruh Ekspor Karet Remah ke Negara Amerika Serikat terhadap Nilai Tukar Rupiah Pada Tahun 2012-2021"
+subtitle: "Metode Penelitian Politeknik APP Jakarta"
+author: "Putri Rahmadina"
+date: JANUARY 19, 2023
+number-sections: true
+format:
+  html: default
+  docx: default
+editor: visual
+---
+
+[![Logo Politeknik APP](poltekapp.jpg){fig-align="center"}](http://poltekapp.ac.id)
+
+## Pendahuluan
+
+### Latar belakang
+
+Indonesia merupakan salah satu negara yang memiliki sumber daya alam yang melimpah, mulai dari sektor pertanian, perkebunan, pertambangan, dan lain-lainnya. Salah satu komoditi pertaniannya yang menjadi salah satu ekspor utama adalah karet. Karet alam dihasilkan dari pohon Heavea brasilensis yang diambil getahnya, kemudian getah karet alam tersebut dijadikan banyak produk turunan, salah satunya adalah karet remah. Karet remah memiliki banyak manfaat dan biasanya digunakan sebagai bahan baku untuk memproduksi ban, jadi dapat dikatakan karet remah ini memiliki permintaan ekspor yang meningkat seiring dengan peningkatan industri otomotif. Tujuan dari penelitian ini adalah menganalisa tentang pengaruh ekspor karet remah ke negara Amerika Serikat terhadap Kurs Rupiah.
+
+### Ruang lingkup
+
+Lingkup pembahasan dalam penelitian ini adalah banyaknya jumlah banyaknya ekspor karet remah Indonesia ke negara Amerika Serikat pada periode tahun 2012-2021 data tersebut didapatkan di website Badan Pusat Statistik yang kemudian dibandingkan dengan jumlah nilai tukar rupiah.
+
+### Rumusan masalah
+
+Penelitian ini dilakukan untuk mencari jawaban dari beberapa point masalah-masalah sebagai berikut:
+
+1.  Apakah ekspor karet remah ke Negara Amerika Serikat berpengaruh terhadap nilai tukar Rupiah?
+2.  Seberapa besarkah pengaruh dari ekspor karet remah ke Negara Amerika Serikat terhadap nilai tukar Rupiah?
+
+### Tujuan dan manfaat penelitian
+
+Tujuan dari penelitian ini adalah demi mengetahui dan mengulik besarnya pasar ekspor karet remah di Negara Amerika Serikat dan pengaruhnya terhadap nilai tukar Rupiah. Selain itu dengan adanya penelitian ini juga diharapkan bermanfaat untuk para pembaca yang juga dapat mengetahui seberapa besar nilai ekspor karet indonesia dan menjadikan hasil penelitian ini sebagai acuan untuk memperbaiki, atau bahkan membuat kebijakan-kebijakan tentang ekspor karet remah di masa depan, khususnya ekspor ke Negara Amerika Serikat.
+
+### Package
+
+Packages yang digunakan antara lain sebagai berikut:
+
+```{r}
+setwd('C:/Metopel/Latihan')
+library('readxl')
+dat<-read_excel('karetlagi.xlsx')
+library('tidyverse')
+```
+
+    ── Attaching packages ───────────────────────────────────────── tidyverse 1.3.2 ──
+    ✔ ggplot2 3.3.6      ✔ purrr   0.3.5 
+    ✔ tibble  3.1.8      ✔ dplyr   1.0.10
+    ✔ tidyr   1.2.1      ✔ stringr 1.4.1 
+    ✔ readr   2.1.3      ✔ forcats 0.5.2 
+    ── Conflicts ──────────────────────────────────────────── tidyverse_conflicts() ──
+    ✖ dplyr::filter() masks stats::filter()
+    ✖ dplyr::lag()    masks stats::lag()
+
+## Studi pustaka
+
+Pada jurnal berjudul "ANALISIS PERMINTAAN EKSPOR KARET ALAM INDONESIA KE AMERIKA SERIKAT" yang diterbitkan oleh AGRISE, Vol XIV No. 2, pada Bulan Mei 2014, berpendapat bahwa konsumsi karet alam global meningkat 4,3% pada tahun 2015 dan Indonesia memiliki prospek ekspor yang sangat bagus. Amerika Serikat menjadi negara tujuan ekspor yang ideal, dan menurut dari data BPS permintaan ekspor karet alam Amerika meningkat setiap tahunnya, yang mengerucutkan kepada pendapat bahwa Amerika merupakan pasar yang memiliki prospek yang bagus bagi karet alam Indonesia, dan dapat membantu meningkatkan pendapatan nasional.
+
+Lalu acuan jurnal yang kedua adalah dari Jurnal Ekonomi Pembangunan, Vol. 15 No.1, halaman 53-59 yang berjudul "PENGARUH EKSPOR, IMPOR, DAN INFLASI TERHADAP NILAI TUKAR RUPIAH DI INDONESIA" terbit pada bulan Juni tahun 2017, menyatakan bahwa ekspor neto berpengaruh terhadap nilai tukar, hal tersebut sesuai dengan teori balance of payment, ekspor neto sering menjadi faktor yang dapat mendorong naik dan turunnya kurs mata uang suatu negara. Kenaikan atau surplus neraca perdagangan memungkinkan terjadinya depresiasi suatu mata uang. Sebaliknya penurunan nilai ekspor neto atau defisit neraca perdagangan menyebabkan terapresiasi mata uang suatu negara.
+
+## Metode penelitian
+
+### Data Nilai Ekspor Karet Remah ke Negara Amerika Serikat Tahun 2012-2021
+
+| Tahun | Nilai Ekspor (USD) | Nilai Tukar (IDR) |
+|-------|--------------------|-------------------|
+| 2012  | 564.200            | 8.512.649.600     |
+| 2013  | 601.500            | 9.075.432.000     |
+| 2014  | 591.200            | 8.920.025.600     |
+| 2015  | 615.800            | 9.291.190.400     |
+| 2016  | 568.400            | 8.576.019.200     |
+| 2017  | 980.400            | 14.861.001.240    |
+| 2018  | 831.700            | 12.606.991.770    |
+| 2019  | 760.500            | 11.527.735.050    |
+| 2020  | 589.600            | 8.937.215.760     |
+| 2021  | 912.700            | 13.834.797.870    |
+
+: Data Ekspor Karet Remah Menurut Negara Tujuan Utama : Amerika Serikat Sumber: Badan Pusat Statistik (FOB : 000 US\$)
+
+``` {library('readxl')}
+dat<-read_excel('karetlagi.xlsx')
+library('tidyverse')
+```
+
+```{r}
+setwd('C:/Metopel/Latihan')
+library('readxl')
+dat<-read_excel('karetlagi.xlsx')
+library('tidyverse')
+plot(dat$X,dat$Y,xlab="Indonesia",ylab="Amerika Serikat")
+```
+
+```{r}
+setwd('C:/Metopel/Latihan')
+library('readxl')
+dat<-read_excel('karetlagi.xlsx')
+library('tidyverse')
+plot(dat$X,dat$Y,xlab="Indonesia",ylab="Amerika Serikat")
+plot(dat$Y,dat$u,xlab="Indonesia",ylab="Amerika Serikat")
+```
+
+### Metode analisis
+
+Metode yang dipilih adalah regresi univariat atau Ordinary Least Square (OLS) dengan 1 variabel independen. Penelitian ini bermaksud mencari hubungan antara nilai ekspor Amerika Serikat dan Nilai Tukar Indonesia Rupiah. Spesifikasi yang dilakukan adalah:
+
+$$
+y_{t}=\beta_0 + \beta_1 x_t+\mu_t
+$$ di mana $y_t$ adalah Nilai ekspor Amerika Serikat dan $x_t$ adalah Nilai Tukar Indonesia Rupiah.
+
+## Pembahasan
+
+### Pembahasan masalah
+
+| Variable  | Coefficients | Std. Error | t value | Pr            |
+|-----------|--------------|------------|---------|---------------|
+| Intercept | 6.200e+03    | 1.494e+03  | 4.151   | 0.0032\*\*    |
+| X         | 6.552e-05    | 1.376e-07  | 476.097 | \<2e-16\*\*\* |
+
+Berdasarkan data nilai ekspor (x) dan data nilai tukar rupiah, diregresikan seperti demikian yang hasilkan dapat diliihat bahwa nilai probabilitas Nilai Ekspor signifikan. Dengan itu, maka dapat dikatakan bahwa adanya nilai ekspor karet remah ke Negara Amerika ini memiliki pengaruh dalam naik dan turunnya nilai tukar suatu negara atau dalam kasus ini yang dipengaruhi adalah nilai tukar kurs Rupiah. Ditabel juga dijabarkan nilai koefisiensi ekspor sebesar 6.552e-05, maka nilai ekspor karet remah ke negara Amerika ini dinilai membelikan pengaruh yang positif terhadap kurs mata uang Indonesia yaitu rupiah. Maka jika indonesia melakukan ekspor karet remah tersebut sebesar 1 USD maka nulai tukar rupiah akan meningkat sebesar 0,00006552% dari angka tersebut menyatakan bahwa potensi untuk melakukan eskpor karet remah sangatlah besar jika eksportir melakukan ekspor karet remah seharga 100.000 USD maka nilai tukar Indonesian rupiah akan naik sekitar 6,5%.
+
+### Analisis masalah
+
+Hasil regresinya adalah
+
+```{r}
+setwd('C:/Metopel/Latihan')
+library('readxl')
+dat<-read_excel('karetlagi.xlsx')
+library('tidyverse')
+plot(dat$X,dat$Y,xlab="Indonesia",ylab="Amerika Serikat")
+reg1<-lm(Y~X,data=dat)
+summary(reg1)
+```
+
+    Call:
+    lm(formula = Y ~ X, data = dat)
+
+    Residuals:
+        Min      1Q  Median      3Q     Max 
+    -2124.9  -311.5   314.9   595.1   884.4 
+
+    Coefficients:
+                 Estimate Std. Error t value Pr(>|t|)    
+    (Intercept) 6.200e+03  1.494e+03   4.151   0.0032 ** 
+    X           6.552e-05  1.376e-07 476.097   <2e-16 ***
+    ---
+    Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+    Residual standard error: 988.3 on 8 degrees of freedom
+    Multiple R-squared:      1, Adjusted R-squared:      1 
+    F-statistic: 2.267e+05 on 1 and 8 DF,  p-value: < 2.2e-16
+
+## Kesimpulan
+
+Dari hasil analisis ini maka sudah jelas terbukti melalui hitungan bahwa nilai ekspor karet remah ke Negara Amerika Serikat ini sangat berpengaruh terhadap nilai tukar Rupiah, dengan memiliki pengaruh yang signifikan, yaitu sebesar 6.552e-05 atau sekiranya 6,5% jika eksportir mematok harga 100.000 USD. Hal ini menunjukkan bahwa pemerintah seharusnya lebih giat dalam mendukung ekspor karet remah dengan menyederhanakan regulasi ekspor karet, melestarikan perkebunan atau pertanian, serta ikut mendukung ekspor produk turunan karet lainnya yang nantinya akan menjadi komoditi unggulan untuk diekspor dan membantu memperbaiki nilai tukar Rupiah.
+
+## Referensi
+
+Badan Pusat Statistik,(2022). *Ekspor Karet Remah Menurut Negara Tujuan Utama, 2012-2021*. <https://www.bps.go.id/statictable/2019/02/27/2030/ekspor-karet-remah-menurut-negara-tujuan-utama-2012-2021.html>
+
+Setyawati, I. K., Lin, Y.-S., & Setiawan, B. (2014). ANALISIS PERMINTAAN EKSPOR KARET ALAM INDONESIA KE AMERIKA SERIKAT. *AGRISE*, *XIV*, 89--106.
+
+Silitonga, R. B., Ishak, Z., & Mukhlis. (2017). PENGARUH EKSPOR, IMPOR, DAN INFLASI TERHADAP NILAI TUKAR RUPIAH DI INDONESIA. *Jurnal Ekonomi Pembangunan*, *15*(1), 53--59.
